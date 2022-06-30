@@ -1,4 +1,5 @@
 @model IEnumerable<JuliePro_Models.CalendarEvent>
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,6 +10,11 @@
 
     <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/imagesLayout/JulioProImage.png" style="width:50%" /></a>
     <br />
+    @foreach (var item in Model)
+    {
+     <partial name="_CalenderEvent" model="@item" />
+    }
+
     <br />
-    
+
 </div>
