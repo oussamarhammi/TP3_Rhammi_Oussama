@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JuliePro_DataAccess\JuliePro_DataAccess.csproj" />
+    <ProjectReference Include="..\JuliePro_Models\JuliePro_Models.csproj" />
+    <ProjectReference Include="..\JuliePro_Utility\JuliePro_Utility.csproj" />
+  </ItemGroup>
+
+</Project>

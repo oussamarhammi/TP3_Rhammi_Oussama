@@ -1,0 +1,50 @@
+﻿@using JuliePro_Models.ViewModels
+@model GenericControllerDisplayVM<ObjectiveForDisplayVM>
+@{
+ViewData["Title"] = SharedLocals[Model.GeneralViewInfos.PageTitle];
+}
+
+<div class="row justify-content-center view-display">
+    <div class="col-8">
+        @{
+            ViewData["Id"] = Model.Id;
+        }
+        <partial name="_ViewHeader" model="Model.GeneralViewInfos" view-data="ViewData" />
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.Name" readonly class="form-control" id="Name" placeholder="@Html.DisplayNameFor(model => model.Entity.Name)" />
+            <label for="Name" asp-for="Entity.Name"></label>
+            <span asp-validation-for="Entity.Name" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.LostWeight" readonly class="form-control" id="LostWeight" placeholder="@Html.DisplayNameFor(model => model.Entity.LostWeight)" />
+            <label for="LostWeight" asp-for="Entity.LostWeight"></label>
+            <span asp-validation-for="Entity.LostWeight" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.DistanceKm" readonly class="form-control" id="DistanceKm" placeholder="@Html.DisplayNameFor(model => model.Entity.DistanceKm)" />
+            <label for="DistanceKm" asp-for="Entity.DistanceKm"></label>
+            <span asp-validation-for="Entity.DistanceKm" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.AchievedDate" readonly class="form-control" id="AchievedDate" placeholder="@Html.DisplayNameFor(model => model.Entity.AchievedDate)" />
+            <label for="AchievedDate" asp-for="Entity.AchievedDate"></label>
+            <span asp-validation-for="Entity.AchievedDate" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.Customer" readonly class="form-control" id="Customer" placeholder="@Html.DisplayNameFor(model => model.Entity.Customer)" />
+            <label for="Customer" asp-for="Entity.Customer"></label>
+            <span asp-validation-for="Entity.Customer" class="text-danger"></span>
+        </div>
+        @if (!Model.IsDetails)
+        {
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Entity.Id" />
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@SharedLocals[Model.GeneralViewInfos.SubmitButtonText]</button>
+            </div>
+        </form>
+        }
+    </div>
+</div>
+@section Scripts {
+}

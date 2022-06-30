@@ -1,0 +1,30 @@
+﻿@using JuliePro_Models.ViewModels
+@model GenericControllerUpsertVM<Speciality>
+@{
+ViewData["Title"] = SharedLocals[Model.GeneralViewInfos.PageTitle];
+}
+
+<div class="row justify-content-center view-upsert">
+    <div class="col-8">
+        @{
+            ViewData["Id"] = Model.Id;
+        }
+        <partial name="_ViewHeader" model="Model.GeneralViewInfos" view-data="ViewData" />
+        <form asp-action="Upsert">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IsCreate" />
+            <input type="hidden" asp-for="Entity.Id" />
+            <div class="form-floating mb-3">
+                <input asp-for="Entity.Name" class="form-control" id="Name" placeholder="@Html.DisplayNameFor(model => model.Entity.Name)" />
+                <label for="Name" asp-for="Entity.Name"></label>
+                <span asp-validation-for="Entity.Name" class="text-danger"></span>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@SharedLocals[Model.GeneralViewInfos.SubmitButtonText]</button>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

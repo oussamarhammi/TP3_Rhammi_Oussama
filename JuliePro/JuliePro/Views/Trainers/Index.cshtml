@@ -1,0 +1,66 @@
+﻿@using JuliePro_Models.ViewModels
+@model GenericControllerIndexVM<TrainerForListVM>
+@{
+ViewData["Title"] = SharedLocals[Model.GeneralViewInfos.PageTitle];
+}
+
+<div class="row justify-content-center view-index">
+    <div class="col">
+        @{
+            ViewData["Id"] = Model.Id;
+        }
+        <partial name="_ViewHeader" model="Model.GeneralViewInfos" view-data="ViewData" />
+        <div class="table-responsive">
+            <table class="table border-primary">
+                <thead class="text-bg-primary">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Collection.First().FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Collection.First().LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Collection.First().Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Collection.First().Speciality)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Collection.First().Active)
+                        </th>
+                        <th class="col-2 col-lg-1 text-center" scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="text-primary">
+                    @foreach (var item in Model.Collection) {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Speciality)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Active)
+                        </td>
+                        <td class="text-end">
+                            <div class="hstack gap-3">
+                                <div class="ms-auto h5"><a asp-action="Upsert" asp-route-id="@item.Id"><i class="bi bi-pencil-fill" title="@SharedLocals["Update"]"></i></a></div>
+                                <div class="h5"><a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle-fill" title="@SharedLocals["ViewDetails"]"></i></a></div>
+                                <div class="h5"><a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash3-fill" title="@SharedLocals["Delete"]"></i></a></div>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

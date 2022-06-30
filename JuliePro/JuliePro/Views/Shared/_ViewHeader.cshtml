@@ -1,0 +1,16 @@
+﻿@model GeneralViewInfosVM
+
+<div class="h1 text-primary mb-4">@SharedLocals[Model.PageHeading]</div>
+<div class="hstack gap-4 mb-2 page-actions">
+    @foreach (PageLinkInfos pli in Model.Links)
+    {
+        @if (pli.UsesId)
+        {
+            <partial name="_PageLinkWithId" model="pli" view-data="ViewData" />
+        }
+        else
+        {
+            <partial name="_PageLink" model="pli" />
+        }
+    }
+</div>

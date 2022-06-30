@@ -1,0 +1,109 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+.btn-primary {
+    --bs-btn-color: #e8c9d7;
+    --bs-btn-bg: #e83283;
+    --bs-btn-border-color: #e83283;
+    --bs-btn-hover-color: #FFF;
+    --bs-btn-hover-bg: #eb5196;
+    --bs-btn-hover-border-color: #ea478f;
+    --bs-btn-focus-shadow-rgb: 197,43,111;
+    --bs-btn-active-color: #FFF;
+    --bs-btn-active-bg: #ed5b9c;
+    --bs-btn-active-border-color: #ea478f;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0,0,0,.125);
+    --bs-btn-disabled-color: #e8c9d7;
+    --bs-btn-disabled-bg: #e83283;
+    --bs-btn-disabled-border-color: #e83283;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+table th {
+    font-size: large;
+}
+
+textarea {
+  width: 90%;
+  min-height: 220px;
+  resize: none;
+}
+
+body > .container {
+    background-color: white;
+    border-radius: 1%;
+}
+
+.dropdown-menu {
+    color: deepskyblue;
+    background-color: lightcyan;
+}
+
+    .dropdown-menu a {
+        color: deepskyblue;
+    }
+
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #fff;
+    background-color: deepskyblue;
+}
+.text-bg-primary {
+    background-color: RGBA(232,50,131,var(--bs-bg-opacity,1)) !important;
+    color: #e8c9d7 !important;
+}

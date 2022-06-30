@@ -1,0 +1,60 @@
+﻿@using JuliePro_Models.ViewModels
+@model GenericControllerDisplayVM<CustomerForDisplayVM>
+@{
+ViewData["Title"] = SharedLocals[Model.GeneralViewInfos.PageTitle];
+}
+
+<div class="row justify-content-center view-display">
+    <div class="col-8">
+        @{
+            ViewData["Id"] = Model.Id;
+        }
+        <partial name="_ViewHeader" model="Model.GeneralViewInfos" view-data="ViewData" />
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.FirstName" readonly class="form-control" id="FirstName" placeholder="@Html.DisplayNameFor(model => model.Entity.FirstName)" />
+            <label for="FirstName" asp-for="Entity.FirstName"></label>
+            <span asp-validation-for="Entity.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.LastName" readonly class="form-control" id="LastName" placeholder="@Html.DisplayNameFor(model => model.Entity.LastName)" />
+            <label for="LastName" asp-for="Entity.LastName"></label>
+            <span asp-validation-for="Entity.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.Email" readonly class="form-control" id="Email" placeholder="@Html.DisplayNameFor(model => model.Entity.Email)" />
+            <label for="Email" asp-for="Entity.Email"></label>
+            <span asp-validation-for="Entity.Email" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.Photo" readonly class="form-control" id="Photo" placeholder="@Html.DisplayNameFor(model => model.Entity.Photo)" />
+            <label for="Photo" asp-for="Entity.Photo"></label>
+            <span asp-validation-for="Entity.Photo" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.BirthDate" readonly class="form-control" id="BirthDate" placeholder="@Html.DisplayNameFor(model => model.Entity.BirthDate)" />
+            <label for="BirthDate" asp-for="Entity.BirthDate"></label>
+            <span asp-validation-for="Entity.BirthDate" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.StartWeight" readonly class="form-control" id="StartWeight" placeholder="@Html.DisplayNameFor(model => model.Entity.StartWeight)" />
+            <label for="StartWeight" asp-for="Entity.StartWeight"></label>
+            <span asp-validation-for="Entity.StartWeight" class="text-danger"></span>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="Entity.Trainer" readonly class="form-control" id="Trainer" placeholder="@Html.DisplayNameFor(model => model.Entity.Trainer)" />
+            <label for="Trainer" asp-for="Entity.Trainer"></label>
+            <span asp-validation-for="Entity.Trainer" class="text-danger"></span>
+        </div>
+        @if (!Model.IsDetails)
+        {
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Entity.Id" />
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">@SharedLocals[Model.GeneralViewInfos.SubmitButtonText]</button>
+            </div>
+        </form>
+        }
+    </div>
+</div>
+@section Scripts {
+}
