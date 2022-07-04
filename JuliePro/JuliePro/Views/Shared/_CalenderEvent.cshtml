@@ -5,16 +5,17 @@
     <thead>
         <tr>
             <th>
-                @Model.Date
+                Date
             </th>
             <th>
-                @Model.Title
+               Titre
+            </th>
+            <th>
+                voir desicription
             </th>
         </tr>
     </thead>
     <tbody>
-        {
-
         <tr>
             <td>
                 @Model.Date
@@ -23,11 +24,19 @@
                 @Model.Title
             </td>
 
+
             <td>
-                <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@Model.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                <button class="btn btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#CalenderEvent@(Model.Id)"  >
+                    Button pour voir description
+                </button>
             </td>
-        </tr>}
-    </tbody>
+
+        </tr>
+        <div class="collapse" id="CalenderEvent@(Model.Id)">
+            <div class="card card-body">
+                @Model.Description
+            </div>
+        </div>
+
+
 </table>

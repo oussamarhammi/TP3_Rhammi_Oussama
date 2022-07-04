@@ -107,3 +107,14 @@ body > .container {
     background-color: RGBA(232,50,131,var(--bs-bg-opacity,1)) !important;
     color: #e8c9d7 !important;
 }
+
+table{
+    border-collapse: collapse;
+    width:100%;
+
+}
+
+th,td{
+    border:2px black solid;
+
+}

@@ -24,18 +24,21 @@ namespace JuliePro.Controllers
         private readonly IStringLocalizer<HomeController> _localizer;
 
         private readonly JulieProDbContext _db;
+        
 
         public HomeController(ILogger<HomeController>
-          logger, IStringLocalizer<HomeController> localizer)
+          logger, IStringLocalizer<HomeController> localizer, JulieProDbContext db)
         {
             _logger = logger;
-            
+            _db = db;
         }
 
         public IActionResult Index()
         {
-           
-            return View();
+            var donnees = _db.CalendarEvents.ToList();
+            donnees = _db.CalendarEvents.OrderByDescending(c => c.Date).Take(3).ToList();
+
+            return View(donnees);
         }
 
         public IActionResult Privacy()
