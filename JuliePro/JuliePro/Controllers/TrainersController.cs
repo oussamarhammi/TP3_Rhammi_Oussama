@@ -26,6 +26,8 @@ namespace JuliePro.Controllers
             return View(await _trainersSvc.GetIndexVM());
         }
 
+
+
         // GET: Trainers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -78,6 +80,8 @@ namespace JuliePro.Controllers
 
                 await _trainersSvc.UpdateAsync(vm.Entity);
             }
+
+
 
             return RedirectToAction(nameof(Index));
         }
