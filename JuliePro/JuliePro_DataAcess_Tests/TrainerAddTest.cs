@@ -86,15 +86,15 @@ namespace JuliePro_DataAcess_Tests
                     service.AddAsync(trainer_Second);
 
                 }
-                //Act 
-                List<Trainer> trainers;
-                using(var context = new JulieProDbContext(options))
-                {
-                    var services = new TrainersService(context);
-                    trainers = services.GetAllActive();
-                }
+            //Act 
+            //List<Trainer> trainers;
+            //using (var context = new JulieProDbContext(options))
+            //{
+            //    var services = new TrainersService(context);
+            //    trainers = services.GetAllActive();
+            //}
 
-            }
+        }
         
 
         
