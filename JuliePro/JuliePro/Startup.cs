@@ -1,6 +1,7 @@
 using JuliePro_Core;
 using JuliePro_Core.Interfaces;
 using JuliePro_DataAccess.Data;
+using JuliePro_DataAccess.Initializer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using MultiBooks_DataAccess.Initializer;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -65,13 +67,17 @@ namespace JuliePro
             options.UseSqlServer(
             Configuration.GetConnectionStringForComputer("JulieProMaster2")));
 
+            services.AddIdentity<IdentityUser, IdentityRole>()
+               .AddEntityFrameworkStores<JulieProDbContext>().AddDefaultUI(); ;
+
             /* Activer après avoir configurer MSIdentity*/
-           // services.AddScoped<IDbInitializer, DbInitializer>();
+             services.AddScoped<IDbInitializer, DbInitializer>();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInit // UserManager<ApplicationUser> userManager,
+                   /* RoleManager<ApplicationUser> roleManager*/)
         {
             var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locOptions.Value);
@@ -86,14 +92,15 @@ namespace JuliePro
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            dbInit.Initialize();
 
             app.UseEndpoints(endpoints =>
             {

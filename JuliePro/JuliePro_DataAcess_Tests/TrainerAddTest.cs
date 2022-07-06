@@ -3,6 +3,7 @@ using JuliePro_DataAccess.Data;
 using JuliePro_Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -71,32 +72,40 @@ namespace JuliePro_DataAcess_Tests
         }
 
 
-            [Fact]
-            public void GetAllTrainersTest()
-            {
+        [Fact]
+        public void GetAllTrainers_GetAllActive()
 
-                // Arrange
-                var ResultAttendue = new List<Trainer> { trainer_first };
-                var ResultAttendue2 = new List<Trainer> { trainer_Second };
+        {
+
+
+            // Arrange
+           var ResultatExpect = new List<Trainer>() { trainer_first };
+    
             using (var context = new JulieProDbContext(options))
-                {
-                    context.Database.EnsureDeleted();
-                    var service = new TrainersService(context);
-                    service.AddAsync(trainer_first);
-                    service.AddAsync(trainer_Second);
+            {
+                context.Database.EnsureDeleted();
+                var service = new TrainersService(context);
+                service.AddAsync(trainer_first);
+                service.AddAsync(trainer_Second);
 
-                }
+            }
             //Act 
-            //List<Trainer> trainers;
-            //using (var context = new JulieProDbContext(options))
-            //{
-            //    var services = new TrainersService(context);
-            //    trainers = services.GetAllActive();
-            //}
+            List<Trainer> trainers;
+            using (var context = new JulieProDbContext(options))
+            {
+                var services = new TrainersService(context);
+                trainers = services.GetAllActive().ToList();
+
+            }
+
+            //assert
+            Assert.NotEqual(ResultatExpect, trainers);
 
         }
-        
 
-        
+       
+
+       
+
     }
 }
