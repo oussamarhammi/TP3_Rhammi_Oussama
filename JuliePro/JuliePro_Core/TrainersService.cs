@@ -20,6 +20,11 @@ namespace JuliePro_Core
             return await _db.Trainers.AnyAsync(t => t.Id == id);
         }
 
+        public List<Trainer> GetAllActive()
+        {
+            return _db.Trainers.Where(a => a.Active == true).ToList();
+        }
+
         public async Task<GenericControllerIndexVM<TrainerForListVM>> GetIndexVM()
         {
             return GetIndexVM(
@@ -56,5 +61,6 @@ namespace JuliePro_Core
                         trainer?.Id
             );
         }
+
     }
 }
