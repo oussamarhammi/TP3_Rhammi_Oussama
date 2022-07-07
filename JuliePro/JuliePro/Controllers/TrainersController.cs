@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace JuliePro.Controllers
 {
 
-    [Authorize(Roles = "Admin, SuperAdmin")]
+
     public class TrainersController : Controller
     {
         private readonly ITrainersService _trainersSvc;
@@ -24,8 +24,7 @@ namespace JuliePro.Controllers
         }
 
 
-        [Authorize(Roles = "Admin, SuperAdmin")]
-        [Authorize(Roles = "Trainer, TrainerRole")]
+        [Authorize(Roles = "Admin, Trainer")]
         // GET: Trainers
         public async Task<IActionResult> Index()
         {
@@ -33,7 +32,7 @@ namespace JuliePro.Controllers
         }
 
 
-        [Authorize(Roles = "Admin, SuperAdmin")]
+        [Authorize(Roles = "Admin")]
         // GET: Trainers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -46,7 +45,7 @@ namespace JuliePro.Controllers
         }
 
 
-        [Authorize(Roles = "Admin, SuperAdmin")]
+        [Authorize(Roles = "Admin")]
         // GET: Trainers/Upsert/5
         public async Task<IActionResult> Upsert(int? id)
         {    
@@ -59,7 +58,7 @@ namespace JuliePro.Controllers
         }
 
 
-        [Authorize(Roles = "Admin, SuperAdmin")]
+        [Authorize(Roles = "Admin")]
         // POST: Trainers/Upsert
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -96,6 +95,7 @@ namespace JuliePro.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Trainers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
